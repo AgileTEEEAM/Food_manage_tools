@@ -1,0 +1,38 @@
+  link(rel='stylesheet', href='css/input.css')
+  title input Page
+  meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+  script(src='js/jquery-1.10.2.js')
+  script(src='js/jquery-migrate-1.2.1.js')
+  script.
+    if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
+    jQuery(function($){ //on document.ready
+    $('#dateofBirth').datepicker();
+    })
+    }
+form#signup(action='login', method='post')
+  fieldset
+    legend Food details
+    ol
+      li
+        label(for='empfirstName') Food Name *
+        input#empfirstName(type='text', name='empfirstName', ng-model='empfirstName', placeholder='Full name', required='')
+      li
+        label(for='dateofBirth') Buy Date * 
+        input#dateofBirth(placeholder='mm/dd/yyyy', value='', type='date', name='dateofBirth', required='')
+      li
+        label(for='dateofBirth') Used by Date * 
+        input#dateofBirth(placeholder='mm/dd/yyyy', value='', type='date', name='dateofBirth', required='')
+      li
+        label(for='dateofBirth') Best by Date * 
+        input#dateofBirth(placeholder='mm/dd/yyyy', value='', type='date', name='dateofBirth')
+      li
+        label(for='state') Type
+        select#state(name='state')
+          option Meat
+          option Seafood
+          option Egg
+          option Dairy
+          option Fruits
+          option Vegetables
+          option Drinks
+  input(type='submit', value='Submit')
