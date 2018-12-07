@@ -1,0 +1,50 @@
+html.no-js(lang='en')
+head
+    meta(charset='UTF-8')
+    | 
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    link(rel='stylesheet', href='stylesheets/reset.css')
+    // CSS reset
+    link(rel='stylesheet', href='stylesheets/style.css')
+    | 
+    link(rel='stylesheet', href='stylesheets/show.css')
+    // Resource style
+    // <script src="js/modernizr.js"></script>  Modernizr
+    title Filters
+  body
+    main.cd-main-content
+      .cd-tab-filter-wrapper
+        .cd-tab-filter
+          ul.cd-filters
+            li.placeholder
+              a(data-type='all', href='#0')
+              // selected option on mobile
+            li.filter
+              a.selected(href='#0', data-type='all') All 
+              
+            li.filter(data-filter='.false')
+              a(href='#0', data-type='false') Not Expired
+              
+            li.filter(data-filter='.true')
+              a(href='#0', data-type='true') Expired
+          // cd-filters
+        // cd-tab-filter
+      // cd-tab-filter-wrapper
+      section.cd-gallery
+        ul
+          li.mix.true.Meat
+            a.card
+              span.card-summary
+                |Meat
+                    
+            
+            
+        .cd-fail-message No results found
+      // cd-gallery
+      
+    // cd-main-content
+    script(src='javascripts/jquery-2.1.1.js')
+    script(src='javascripts/jquery.mixitup.min.js')
+    script(src='javascripts/main.js')
+    // Resource jQuery
