@@ -1,22 +1,12 @@
 //Describe tests
-var mocha = require('mocha');
-var assert = require('assert');
-var FoodModel = require('../routes/index.js');
-
+var chai = require('chai');
+var createDate = require('../public/Create_Data.js');
+var expect = chai.expect;
 describe('Save records to DB', function() {
     this.timeout(0);
     // Save records
-    it('Save foods', function(done){
-        var food = new FoodModel ({
-            Food_Name: 'Apple',
-            Buy_Date: 'Monday',
-            Expired_date:'Friday',
-            best_before_date: 'Thursday',
-            Food_type: 'Fruits'
-        });
-        food.save().then(function () {
-            assert(food.isNew === false);
-        });
-        done();
-    });
-});
+    it('Save foods', async function(){
+        const o = await createDate("TestingCreate","1997-11-01", "19971-11-01", "1997-11-01", "Meat" );
+        expect(o).to.equal('create success');
+})});
+
