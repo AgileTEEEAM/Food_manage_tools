@@ -297,7 +297,7 @@ Primary style
   .card .card-summary {
     padding: 5% 5% 3% 5%;
   }
-  @media only screen and (min-width: 12px) {
+  @media only screen and (min-width: 10px) {
     .cd-gallery {
       padding: 40px 3%;
     }
@@ -316,7 +316,7 @@ Primary style
     }
 
   
-  @media only screen and (min-width: 368px) {
+  @media only screen and (min-width: 468px) {
     .cd-gallery {
       padding: 40px 3%;
     }
@@ -330,7 +330,7 @@ Primary style
     }
     .cd-gallery li {
       width: 48%;
-	  height: 48%
+	  height: 42%
       
     }
 
@@ -348,7 +348,7 @@ Primary style
     }
     .cd-gallery li {
       width: 30%;
-	  height: 48%
+	  height: 40%
       
     }
 
@@ -364,7 +364,7 @@ Primary style
     }
     .cd-gallery li {
       width: 23%;
-	  height:23%
+	  height:40%
     }
     .cd-gallery.filter-is-visible {
       /* reduce width when filter is visible */
