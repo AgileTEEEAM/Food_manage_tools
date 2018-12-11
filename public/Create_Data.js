@@ -1,7 +1,7 @@
 var FoodModel = require('./test_DB.js');
 
 //create data in DB module
-var CreateDate =  function(Food_Name=null, Buy_Date=null, Expired_date=null,best_before_date=null,Food_type=null ){
+var CreateDate =  function(Alert_day= 10 ,Food_Name=null, Buy_Date=null, Expired_date=null,best_before_date=null,Food_type=null ){
   
     // formate the Date
     time1 = Buy_Date.replace(/-/g,':').replace(' ',':');
@@ -24,7 +24,8 @@ var CreateDate =  function(Food_Name=null, Buy_Date=null, Expired_date=null,best
       Buy_Date:Buy_Date_dateType,
       Expired_date:Expired_date_dateType,
       best_before_date:best_before_date_dateType,
-      Food_type:Food_type,},
+      Food_type:Food_type,
+      Alert_Day : Alert_day,},
       (err) => {
         if (!err){
             resolve("create success");
@@ -35,27 +36,5 @@ var CreateDate =  function(Food_Name=null, Buy_Date=null, Expired_date=null,best
         }
     });
     })
-   /*
-    //verify insert Data
-    // if we can find the data : output success  create
-    // else output fail create
-    return new Promise( function(resolve,reject){
-        FoodModel.find({Food_Name:Food_Name,Buy_Date:Buy_Date_dateType,Expired_date:Expired_date_dateType,Food_type:Food_type }," -_id  " ,{limit:1},).lean().exec(function (err, data) {
-            
-            console.log("000")
-            console.log(data)
-            console.log("000")
-            if(data[0])
-            {   
-                console.log(data);
-                resolve("success create");
-            }else
-            {
-                resolve("fail create ")
-            }
-      });
-
-  })*/
-
 }  
   module.exports = CreateDate;
