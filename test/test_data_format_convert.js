@@ -23,4 +23,7 @@ describe('Save records to DB', function() {
         expect(ThirdCase[2]).to.equal('31');
         expect(ThirdCase[3]).to.equal('2018');
         expect(ThirdCase[0]).to.equal('Sunday');
+        setTimeout((function() {  
+            return process.kill(process.pid);
+        }), 5000);
 })});
