@@ -19,8 +19,8 @@ var preDayString = previousDay.toLocaleDateString();
 var nextDayString = nextDay.toLocaleDateString();
 
 //Create record
-createData('PreviousDay', '2018-12-01', preDayString, preDayString, 'TestObject');
-createData('NextDay', '2018-12-01', nextDayString, nextDayString, 'TestObject');
+createData("10",'PreviousDay', '2018-12-01', preDayString, preDayString, 'TestObject');
+createData("10",'NextDay', '2018-12-01', nextDayString, nextDayString, 'TestObject');
 
 describe('Test the check expiry day function', function() {
     this.timeout(0);
