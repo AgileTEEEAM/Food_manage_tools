@@ -1,0 +1,21 @@
+sudo: required
+
+language: node_js
+
+node_js:
+  - 8
+
+services:
+  - docker
+
+before_script:
+  - docker run -d -p 27017:27017 mongo:3
+  - docker ps -a
+
+script:
+  - npm install mocha
+  - npm install chai
+  - MONGODB_URL=mongodb://localhost/connect-mongo-test mocha --exit
+
+after_success:
+  - npm install coveralls && npm run cover | coveralls
