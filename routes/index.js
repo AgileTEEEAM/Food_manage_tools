@@ -10,8 +10,11 @@ router.get('/', function(req, res, next) {
 /* GET show page. */
 router.get('/show', async function(req, res, next) {
     var Data = await findData();
-    console.log("llll");
-    console.log(Data);
+    
+    console.log("Data")
+   
+    console.log(Data)
+    console.log("Data")
     res.render('show', {
       buyFoodDate       :Data[0],
       expiredDate       :Data[1],
@@ -19,7 +22,9 @@ router.get('/show', async function(req, res, next) {
       bestBeforeDate    :Data[3], 
       length            :Data[4],
       food_name         :Data[5],
-      Food_type         :Data[6]});
+      Food_type         :Data[6],
+      id                :Data[7],
+    });
 })
   
 /* GET input page. */
@@ -68,5 +73,16 @@ router.get('/inputed', async function(req, res, next) {
   res.render('input_success');
 });
 
+/* GET delete page. */
+router.get('/delete', async function(req, res, next) {
+  let id = req.query.id
+  var iddel = await DeleteDate(id)
+  res.render('input', { title: 'input' });
+});
+
+/* GET update page. */
+router.get('/update', function(req, res, next) {
+  res.render('input', { title: 'input' });
+});
 
 module.exports = router;
