@@ -11,7 +11,10 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  
+  .unique_id{
+    display:none;
+    }
+    
   .card {
     position: relative;
     margin-bottom: 20px;
@@ -82,7 +85,7 @@ border-color: transparent purple;
 .cardbutton2:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
-.date_status[data-status="true"]:after {
+.data_status[data_status="true"]:after {
   font-family: 'Vollkorn', serif;
   font-size: 10px;
   line-height: 15px;
