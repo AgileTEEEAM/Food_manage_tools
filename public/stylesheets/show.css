@@ -11,10 +11,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  .unique_id{
-    display:none;
-    }
-    
+  
   .card {
     position: relative;
     margin-bottom: 20px;
