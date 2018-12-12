@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var createDate = require('../public/Create_Data.js');
 var findData = require('../public/Find_Data.js');
+var DeleteDate = require('../public/Delete_Data.js');
+var check_isexpired = require('../public/Check_Isexpired');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,12 +11,9 @@ router.get('/', function(req, res, next) {
 });
 /* GET show page. */
 router.get('/show', async function(req, res, next) {
+  console.log("1")
+    var a = await check_isexpired();
     var Data = await findData();
-    
-    console.log("Data")
-   
-    console.log(Data)
-    console.log("Data")
     res.render('show', {
       buyFoodDate       :Data[0],
       expiredDate       :Data[1],
@@ -23,8 +22,7 @@ router.get('/show', async function(req, res, next) {
       length            :Data[4],
       food_name         :Data[5],
       Food_type         :Data[6],
-      id                :Data[7],
-    });
+      id                :Data[7]});
 })
   
 /* GET input page. */
@@ -40,19 +38,6 @@ router.get('/inputed', async function(req, res, next) {
   let Expired_date = req.query.Expired_date;
   let best_before_date = req.query.best_before_date;
   let Food_type = req.query.Food_type;
-  /*option='Meat'
-            |                       
-            option='Seafood'
-            |                       
-            option='Egg'
-            |                        
-            option='Dairy'
-            |                        
-            option='Fruits'
-            |                        
-            option='Vegetables'
-            |                       
-            option='Drinks'*/
   if (Food_Name == "Seafood" ||Food_Name == "Meat")
   {
     var Alert_day = '3';
@@ -68,15 +53,15 @@ router.get('/inputed', async function(req, res, next) {
   }
   //let Alert_day = req.query.Alert_time;
   var o = await createDate(Alert_day,Food_Name,Buy_Date, Expired_date, best_before_date, Food_type );
-  console.log("00");
-  console.log(o);
   res.render('input_success');
 });
 
 /* GET delete page. */
 router.get('/delete', async function(req, res, next) {
   let id = req.query.id
+  console.log(id)
   var iddel = await DeleteDate(id)
+  console.log(iddel)
   res.render('input', { title: 'input' });
 });
 
@@ -84,5 +69,6 @@ router.get('/delete', async function(req, res, next) {
 router.get('/update', function(req, res, next) {
   res.render('input', { title: 'input' });
 });
+
 
 module.exports = router;
