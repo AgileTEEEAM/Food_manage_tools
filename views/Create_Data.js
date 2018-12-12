@@ -1,7 +1,7 @@
-var FoodModel = require('./test_DB.js');
+var FoodModel = require('../views/test_DB.js');
 
 //create data in DB module
-var CreateDate =  function(alert = null,Food_Name=null, Buy_Date=null, Expired_date=null,best_before_date=null,Food_type=null ){
+var CreateDate = async function(Food_Name=null, Buy_Date=null, Expired_date=null,best_before_date=null,Food_type=null ){
   
     // formate the Date
     time1 = Buy_Date.replace(/-/g,':').replace(' ',':');
@@ -16,9 +16,8 @@ var CreateDate =  function(alert = null,Food_Name=null, Buy_Date=null, Expired_d
     time2 = time2.split(':');
     var best_before_date_dateType = new Date(time2[0],(time2[1]-1),time2[2]);// convert the best_before_date of food to Data Type   
   
-    return new Promise( function(resolve,reject){
-
-         //insert the date to DB
+  
+    //insert the date to DB
     FoodModel.create({
       Food_Name: Food_Name,
       Buy_Date:Buy_Date_dateType,
@@ -27,24 +26,18 @@ var CreateDate =  function(alert = null,Food_Name=null, Buy_Date=null, Expired_d
       Food_type:Food_type,},
       (err) => {
         if (!err){
-            resolve("create success");
+            console.log("create success");
         }
         else
         {
             throw err;
         }
     });
-    })
-   /*
     //verify insert Data
     // if we can find the data : output success  create
     // else output fail create
-    return new Promise( function(resolve,reject){
+    return new Promise(function(resolve,reject){
         FoodModel.find({Food_Name:Food_Name,Buy_Date:Buy_Date_dateType,Expired_date:Expired_date_dateType,Food_type:Food_type }," -_id  " ,{limit:1},).lean().exec(function (err, data) {
-            
-            console.log("000")
-            console.log(data)
-            console.log("000")
             if(data[0])
             {   
                 console.log(data);
@@ -55,7 +48,7 @@ var CreateDate =  function(alert = null,Food_Name=null, Buy_Date=null, Expired_d
             }
       });
 
-  })*/
+  })
 
 }  
   module.exports = CreateDate;
