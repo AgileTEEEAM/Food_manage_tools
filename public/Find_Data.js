@@ -5,7 +5,8 @@ var convert_existing_date = require('./Convert_Date_format.js');
 //Find data in DB module
 var FindDate =  function(){
     return new Promise(function(resolve,reject){
-        FoodModel.find({},"-_id ",{},).then((result)=>{
+        FoodModel.find({},"",{},).then((result)=>{
+            var id = [];
             var food = [];
             var expire = [];
             var buyFoodDate = [];
@@ -14,6 +15,7 @@ var FindDate =  function(){
             var expiredDate = [];
             for (var i = 0; i < result.length ; i++)
             {
+              id.push(result[i]._id);
               // extract the food name from the database
               food.push(result[i].Food_Name);
               // extract the Buy_Date of those food from the database
@@ -31,7 +33,7 @@ var FindDate =  function(){
               // extract the Isexpired of those food from the database
               expire.push(result[i].Isexpired); 
             }
-            resolve ([buyFoodDate,expiredDate,expire,bestBeforeDate,result.length,food,FoodType]);
+            resolve ([buyFoodDate,expiredDate,expire,bestBeforeDate,result.length,food,FoodType,id]);
             })
       })
   }
