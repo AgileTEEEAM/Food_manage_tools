@@ -43,17 +43,25 @@ head
                     div
                       h2 #{food_name[i]}
                     br
-                    div Buy in: #{buyFoodDate[i][2]+"-"+buyFoodDate[i][1]+"-"+buyFoodDate[i][3]}
+                    div Buy in: #{buyFoodDate[i][2]+" "+buyFoodDate[i][1]+" "+buyFoodDate[i][3]}
                     br
-                    div Best Before Date: #{bestBeforeDate[i][2]+"-"+bestBeforeDate[i][1]+"-"+bestBeforeDate[i][3]} 
-                    
+                    div Best Before Date: #{bestBeforeDate[i][2]+" "+bestBeforeDate[i][1]+" "+bestBeforeDate[i][3]} 
                     br
-                    div Expired Date: #{expiredDate[i][2]+"-"+expiredDate[i][1]+"-"+expiredDate[i][3]}
+                    div Expired Date: #{expiredDate[i][2]+" "+expiredDate[i][1]+" "+expiredDate[i][3]}
                     br
-                    
-                      
-            -}
-                    .cd-fail-message No results found
+                    div
+                      p.data_status(data_status=""+Isexpired[i])
+                        form#delete(action="delete", method="get")
+                          fieldset
+                            input(class="unique_id",type="text", name="id", value = id[i])
+                          input(class='cardbutton cardbutton2', type="submit", value="Delete")
+                        
+                        input(class='cardbutton cardbutton2', type='submit', value='Update')
+
+                        
+
+                  -}
+        .cd-fail-message No results found
       // cd-gallery
       .cd-filter
         form

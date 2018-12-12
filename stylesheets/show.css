@@ -1,0 +1,113 @@
+.cards {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    padding: 1.5%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .unique_id{
+    display:none;
+    }
+    
+  .card {
+    position: relative;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    background: #fefff9;
+    color: #363636;
+    text-decoration: none;
+    -moz-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+  }
+  
+  .mdl-card__title {
+  align-items: flex-start;
+  flex-direction: column;
+  flex: 1 auto;
+  float: left;
+}
+.mdl-card__title-text {
+  align-self: flex-start;
+}
+.type_ch{
+width: 0px;
+height: 0px;
+border-width: 0px 40px 40px 00px;
+border-style: solid;
+float: right;
+}
+.type_colour[type-status="Meat"]{
+border-color: transparent red;
+}
+.type_colour[type-status="Seafood"]{
+border-color: transparent blue;
+}
+.type_colour[type-status="Egg"]{
+border-color: transparent yellow;
+}
+.type_colour[type-status="Dairy"]{
+border-color: transparent orange;
+}
+.type_colour[type-status="Fruits"]{
+border-color: transparent lime;
+}
+.type_colour[type-status="Vegetables"]{
+border-color: transparent green;
+}
+.type_colour[type-status="Drinks"]{
+border-color: transparent purple;
+}
+.cardbutton {
+  background-color: #41307c; 
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  float: right;
+}
+.cardbutton2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.data_status[data_status="true"]:after {
+  font-family: 'Vollkorn', serif;
+  font-size: 10px;
+  line-height: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: red;
+  border: 7px solid red;
+  float: left;
+  padding: 10px 7px;
+  border-radius: 10px;
+  content : "Expired";
+  
+  opacity: 0.5;
+  -webkit-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  position:absolute;
+  top:92%;
+ content : "Expired";
+
+}
+
+
+ 
