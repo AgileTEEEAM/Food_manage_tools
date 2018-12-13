@@ -16,6 +16,9 @@ script:
   - npm install mocha
   - npm install chai
   - MONGODB_URL=mongodb://localhost/connect-mongo-test mocha --exit
-
 after_success:
-  - npm install coveralls && npm run cover | coveralls
+  - bash <(curl -s https://codecov.io/bash)	
+
+ branches:
+  only: 
+    - master
