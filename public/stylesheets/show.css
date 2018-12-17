@@ -82,7 +82,7 @@ border-color: transparent purple;
 .cardbutton2:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
-.data_status[data_status="true"]:after {
+.date_status[data-status="true"]:after {
   font-family: 'Vollkorn', serif;
   font-size: 10px;
   line-height: 15px;
@@ -101,10 +101,65 @@ border-color: transparent purple;
   -moz-transform: rotate(-10deg);
   -ms-transform: rotate(-10deg);
   position:absolute;
-  top:92%;
+  top:150px;
  content : "Expired";
 
 }
+.date_status1[data-status1="true"]:after {
+  content : "The item NEARLY EXPIRED!!";
+ color:red;
+ font-weight:bold;
+ position:absolute;
+ top:130%;
+ width:230px;
+
+}
+.displayNS[displayNS="true"]:after {
+ display:block;
+
+}
+.displayNS[displayNS="false"] {
+ display:none;
+
+}
+
+.alert{
+	padding:20px;
+	top:13px;
+	position: relative;
+	background-color: #f44336;
+	color: white;
+}
+
+.alert:before {
+	position:absolute;
+	top:-33px;
+	right:41%;
+	border-top:20px solid transparent;
+	content:" "; 
+	width:0px;
+	height:0px;
+	border-right:15px solid transparent; 
+	border-bottom:15px solid #f44336; 
+	border-left:15px solid transparent;
+}
 
 
- 
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.unique_id{
+  display: none;
+}
