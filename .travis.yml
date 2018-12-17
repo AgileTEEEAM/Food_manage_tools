@@ -29,6 +29,8 @@ after_success:
   - git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* || exit
   - git add . 
   - git status
+  - git fetch --all || exit
+  - git checkout -b master || exit
   - git merge --no-ff "$TRAVIS_COMMIT" || exit
   - git push "https://${GH_TOKEN}@github.com/AgileTEEEAM/Food_manage_tools" HEAD:master
 branches:
