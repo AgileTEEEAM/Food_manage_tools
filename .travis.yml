@@ -27,8 +27,9 @@ after_success:
   - git config user.name "kenton18"
   - git config user.email "wilsom20012@gmail.com"
   - git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* || exit
-  - git pull origin master || exit
-  - git checkout master || exit
+  - git status
+  - git fetch --all || exit
+  - git checkout -  || exit
   - git merge --no-ff "$TRAVIS_COMMIT" || exit
   - git push "https://${GH_TOKEN}@github.com/AgileTEEEAM/Food_manage_tools" HEAD:master
 branches:
