@@ -28,6 +28,7 @@ after_success:
   - git config user.email "wilsom20012@gmail.com"
   - git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* || exit
   - git add . 
+  - git commit -m "TRAVIS_COMMIT"
   - git status
   - git fetch --all || exit
   - git checkout master || exit
