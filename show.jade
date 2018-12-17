@@ -1,0 +1,122 @@
+html.no-js(lang='en')
+head
+    meta(charset='UTF-8')
+    | 
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    link(rel='stylesheet', href='stylesheets/reset.css')
+    // CSS reset
+    link(rel='stylesheet', href='stylesheets/style.css')
+    | 
+    link(rel='stylesheet', href='stylesheets/show.css')
+    // Resource style
+    // <script src="js/modernizr.js"></script>  Modernizr
+    title Filters
+  body
+    main.cd-main-content
+      .cd-tab-filter-wrapper
+        .cd-tab-filter
+          ul.cd-filters
+            li.placeholder
+              a(data-type='all', href='#0')
+              // selected option on mobile
+            li.filter
+              a.selected(href='#0', data-type='all') All 
+              
+            li.filter(data-filter='.false')
+              a(href='#0', data-type='false') Not Expired
+            
+            li.filter(data-filter='.OVER')
+              a(href='#0', data-type='OVER') Expired
+
+            .displayNS(displayns=""+alert_Isexpired)
+              .alert
+                  span.closebtn(onclick="this.parentElement.style.display='none';") ×
+                  strong The food has expired already
+
+
+      section.cd-gallery
+        ul
+            -for (var i = 0 ; i < length ; i++){
+              - var lsitClass= "mix"+" "+Isexpired[i]+" "+Food_type[i]+" "+food_name[i]
+              li(class=lsitClass)
+                a.card
+                  span.card-summary
+                    .type_ch.type_colour(type-status=Food_type[i])
+                      i
+                    div
+                      h2 #{food_name[i]}
+                    br
+                    div Buy in: #{buyFoodDate[i][2]+" "+buyFoodDate[i][1]+" "+buyFoodDate[i][3]}
+                    br
+                    div Best Before Date: #{bestBeforeDate[i][2]+" "+bestBeforeDate[i][1]+" "+bestBeforeDate[i][3]} 
+                    br
+                    div Expired Date: #{expiredDate[i][2]+" "+expiredDate[i][1]+" "+expiredDate[i][3]}
+                    br
+                    div
+                      //p.data-status(data-status=""+<expired data>)
+                    div
+                      //p.data-status1(data-status1=""+<expired soon data>)
+                      
+
+
+
+                  -}
+        .cd-fail-message No results found
+      // cd-gallery
+      .cd-filter
+        form
+          
+          .cd-filter-block
+            h4 Food Type
+            | 
+            ul.cd-filter-content.cd-filters.list
+              li
+                input#checkbox1.filter(data-filter='.Meat', type='checkbox')
+                |     
+                label.checkbox-label(for='checkbox1') Meat
+              | 
+              li
+                input#checkbox2.filter(data-filter='.Seafood', type='checkbox')
+                | 
+                label.checkbox-label(for='checkbox2') Seafood
+              | 
+              li
+                input#checkbox3.filter(data-filter='.Egg', type='checkbox')
+                | 
+                label.checkbox-label(for='checkbox3') Egg
+              | 
+              | 
+              li
+                input#checkbox3.filter(data-filter='.Dairy', type='checkbox')
+                | 
+                label.checkbox-label(for='checkbox3') Dairy
+              | 
+              | 
+              li
+                input#checkbox3.filter(data-filter='.Fruits', type='checkbox')
+                | 
+                label.checkbox-label(for='checkbox3') Fruits
+              | 
+              | 
+              li
+                input#checkbox3.filter(data-filter='.Vegetables', type='checkbox')
+                | 
+                label.checkbox-label(for='checkbox3') Vegetables
+              | 
+              | 
+              li
+                input#checkbox3.filter(data-filter='.Drinks', type='checkbox')
+                | 
+                label.checkbox-label(for='checkbox3') Drinks
+           
+        | 
+        a.cd-close(href='#0') Close
+      // cd-filter
+      a.cd-filter-trigger(href='#0') Filters
+
+    // cd-main-content
+    script(src='javascripts/jquery-2.1.1.js')
+    script(src='javascripts/jquery.mixitup.min.js')
+    script(src='javascripts/main.js')
+    // Resource jQuery
