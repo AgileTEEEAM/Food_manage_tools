@@ -31,8 +31,8 @@ after_success:
   - git commit -m "TRAVIS_COMMIT"
   - git status
   - git fetch --all || exit
-  - git checkout master || exit
-  - git merge --no-ff "$TRAVIS_COMMIT" || exit
+  - git reflog
+  - git checkout -b temp HEAD@{$TRAVIS_COMMIT}
   - git push "https://${GH_TOKEN}@github.com/AgileTEEEAM/Food_manage_tools" HEAD:master
 branches:
   only: 
