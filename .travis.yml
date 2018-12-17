@@ -30,7 +30,7 @@ after_success:
   - git pull origin master || exit
   - git checkout origin/master || exit
   - git merge --no-ff "$TRAVIS_COMMIT" || exit
-  - git push "https://${GH_TOKEN}@github.com/AgileTEEEAM/Food_manage_tools" 
+  - git push "https://${GH_TOKEN}@github.com/AgileTEEEAM/Food_manage_tools" HEAD:master
 branches:
   only: 
     - master
