@@ -25,16 +25,21 @@ head
               
             li.filter(data-filter='.false')
               a(href='#0', data-type='false') Not Expired
-              
-            li.filter(data-filter='.true')
-              a(href='#0', data-type='true') Expired
+            
+            li.filter(data-filter='.OVER')
+              a(href='#0', data-type='OVER') Expired
+
+            .displayNS(displayns=""+alert_Isexpired)
+              .alert
+                  span.closebtn(onclick="this.parentElement.style.display='none';") ×
+                  strong The food has expired already
           // cd-filters
         // cd-tab-filter
       // cd-tab-filter-wrapper
       section.cd-gallery
         ul
             -for (var i = 0 ; i < length ; i++){
-              - var lsitClass= "mix"+" "+Isexpired[i]+" "+Food_type[i]
+              - var lsitClass= "mix"+" "+Isexpired[i]+" "+Food_type[i]+" "+food_name[i]
               li(class=lsitClass)
                 a.card
                   span.card-summary
@@ -50,15 +55,20 @@ head
                     div Expired Date: #{expiredDate[i][2]+" "+expiredDate[i][1]+" "+expiredDate[i][3]}
                     br
                     div
-                      p.data_status(data_status=""+Isexpired[i])
-                        form#delete(action="delete", method="get")
-                          fieldset
-                            input(class="unique_id",type="text", name="id", value = id[i])
-                          input(class='cardbutton cardbutton2', type="submit", value="Delete")
+                      p.data-status(data-status=""+Isexpired[i])
+                    div
+                      p.data-status1(data-status1=""+Isexpire_soon[i])
+                      form#delete(action="delete", method="get")
+                        fieldset
+                          input(class="unique_id",type="text", name="id", value = id[i])
+                        input(class='cardbutton cardbutton2', type="submit", value="Delete")
+                      form#update(action="update", method="get")
+                        fieldset
+                          input(class="unique_id",type="text", name="id", value = id[i])
+                        input(class='cardbutton cardbutton2', type="submit", value="Update")
                         
-                        input(class='cardbutton cardbutton2', type='submit', value='Update')
 
-                        
+
 
                   -}
         .cd-fail-message No results found
