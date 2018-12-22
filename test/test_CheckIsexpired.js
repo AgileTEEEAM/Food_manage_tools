@@ -19,21 +19,23 @@ var preDayString = previousDay.toLocaleDateString();
 var nextDayString = nextDay.toLocaleDateString();
 
 //Create record
-createData("10",'PreviousDay', '2018-12-01', preDayString, preDayString, 'TestObject');
-createData("10",'NextDay', '2018-12-01', nextDayString, nextDayString, 'TestObject');
+createData('PreviousDay1', '2018-12-01', preDayString, preDayString, 'TestObject');
+createData('NextDay1', '2018-12-01', nextDayString, nextDayString, 'TestObject');
 
 describe('Test the check expiry day function', function() {
     this.timeout(0);
     it("Check the expired status ", async function(){
         await checkExpired();
-        var data1 = await DB.findOne({ Food_Name: 'PreviousDay' });
-        console.log('Status of food that expired yesterday is '+data1.Isexpired);
         
-        var data2 = await DB.findOne({ Food_Name: 'NextDay' });
-        console.log('Status of food that will expire tommorrow is '+ data2.Isexpired);
+        var data1 = await DB.findOne({ Food_Name: 'PreviousDay1' });
+        console.log(data1)
+        console.log('Status of food that expired yesterday is '+data1.Isexpired1);
+        
+        var data2 = await DB.findOne({ Food_Name: 'NextDay1' });
+        console.log('Status of food that will expire tommorrow is '+ data2.Isexpired1);
 
-        expect(data1.Isexpired).to.equal(true);
-        expect(data2.Isexpired).to.equal(false);
+        expect(data1.Isexpired1).to.equal(true);
+        expect(data2.Isexpired1).to.equal(false);
 
     })
 })

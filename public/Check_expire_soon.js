@@ -1,7 +1,7 @@
 var FoodModel = require('./test_DB');
 
 
-var check_expired = function(){
+var Check_expire_soon = function(){
     
 var convert_existing_date = function(time = null)
 {
@@ -14,7 +14,6 @@ var convert_existing_date = function(time = null)
     else
     {
     time = time.split(' ');
-    console.log(time)
     }
     
 if(time[0]=="Sun")
@@ -99,57 +98,50 @@ return time;
 //                time[1] = month
 //                time[2] = day
 //                time[3] = year
-var existing_date = convert_existing_date()
-console.log(existing_date)
-
+var exist = new Date();
 return new Promise( function(resolve,reject){
 FoodModel.find({ },  function (err, docs) {
     //var i;
-    var Isexpired = 0;
    for (i = 0 ;i<docs.length; i++ )
-   {
-       var dataTime = String(docs[i].Expired_date)
-       var data_date = convert_existing_date(dataTime)
-       if (data_date[3] <= existing_date[3])
-       {
-        if (data_date[1] <= existing_date[1])
-        {
-            if (data_date[2] <= existing_date[2])
-       {
-           Isexpired = String(docs[i]._id)
-           FoodModel.findOneAndUpdate({_id:Isexpired},{Isexpired1: true },{ returnOriginal: false }, function (err, expried_data) {
-                console.log("found one expried")
-           })
-       }
-        }
-       }
+   {    
+        var id_num = docs[i]._id ;
+       var s = String(docs[i].Expired_date)
+       var Expireddata_date = convert_existing_date(s)
+       var DataTime = Expireddata_date[3]+'/'+Expireddata_date[1]+'/'+Expireddata_date[2]+" 12:00:00"
+       //convert to s
+       var ExpiredDataTime = new Date(DataTime);
 
-   }
-   for (i = 0 ;i<docs.length; i++ )
-   {
-       var dataTime = String(docs[i].best_before_date)
-       var data_date = convert_existing_date(dataTime)
-       if (data_date[3] <= existing_date[3])
-       {
-        if (data_date[1] <= existing_date[1])
-        {
-            if (data_date[2] <= existing_date[2])
-       {
-           Isexpired = String(docs[i]._id)
-           FoodModel.findOneAndUpdate({_id:Isexpired},{ Isexpired1: true },{ returnOriginal: false }, function (err, expried_data) {
-                console.log("found one expried")
-           })
-       }
-        }
-       }
        
-   resolve("ok");
+       var time_different = (ExpiredDataTime - exist) / 86400000;
+       
+        if (time_different <= docs[i].alert && time_different > 0)
+        {
+            FoodModel.findOneAndUpdate({_id:id_num},{ Isexpire_soon: "true" },{ returnOriginal: false }, function (err, expried_data) {
+                
+            })
+            
+        }
+        else if  (time_different <= 0 )
+        {
+            FoodModel.findOneAndUpdate({_id:id_num},{ Isexpire_soon: "OVER" },{ returnOriginal: false }, function (err, expried_data) {
+                
+            })
+            
+        }
+        else{FoodModel.findOneAndUpdate({_id:id_num},{ Isexpire_soon: "false" },{ returnOriginal: false }, function (err, expried_data) {
+            
+        })}
 
+        resolve("ok");
    }
    
+   
 
-})}
+})
 
-);
 }
-module.exports = check_expired;
+
+)
+}
+Check_expire_soon()
+module.exports = Check_expire_soon;

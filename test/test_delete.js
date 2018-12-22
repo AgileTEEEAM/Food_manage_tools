@@ -15,9 +15,10 @@ describe('Test function of Deleting Data', function() {
     // Save records
     it('Delete data by ID', async function(){
         var data = await DB.findOne({Food_Name: 'TestDelete'});
-
         const o = await deleteData(data._id);
+        const b = await deleteData("abdefg");
         expect(o).to.equal(data._id);
+        expect(b).to.equal("error");
 
         //fail Test
         //expect(o).to.equal('Should be fail the test');

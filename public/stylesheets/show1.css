@@ -114,21 +114,14 @@ border-color: transparent purple;
  width:230px;
 
 }
-.displayNS[displayNS="true"]:after {
- display:block;
-
-}
-.displayNS[displayNS="false"] {
- display:none;
-
-}
 
 .alert{
 	padding:20px;
 	top:13px;
 	position: relative;
 	background-color: #f44336;
-	color: white;
+  color: white;
+  display:none;
 }
 
 .alert:before {
@@ -163,5 +156,3 @@ border-color: transparent purple;
 .unique_id{
   display: none;
 }
-
- 
