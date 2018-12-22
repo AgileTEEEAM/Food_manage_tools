@@ -29,7 +29,7 @@ head
             li.filter(data-filter='.OVER')
               a(href='#0', data-type='OVER') Expired
 
-            .displayNS(displayns=""+alert_Isexpired)
+            .displayNS(displayNS=''+Has_veriable)
               .alert
                   span.closebtn(onclick="this.parentElement.style.display='none';") ×
                   strong The food has expired already
@@ -39,7 +39,7 @@ head
       section.cd-gallery
         ul
             -for (var i = 0 ; i < length ; i++){
-              - var lsitClass= "mix"+" "+Isexpired[i]+" "+Food_type[i]+" "+food_name[i]
+              - var lsitClass= "mix"+" "+Isexpire_soon[i]+" "+Food_type[i]+" "+food_name[i]
               li(class=lsitClass)
                 a.card
                   span.card-summary

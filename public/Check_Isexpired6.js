@@ -8,6 +8,7 @@ var convert_existing_date = function(time = null)
     if (time == null)
     {
         var time1 = new Date();
+        console.log(time1)
     time = time1.toString().replace(/-/g,':').replace('T',':');
     time = time.split(' ');
     }
@@ -99,15 +100,20 @@ return time;
 //                time[1] = month
 //                time[2] = day
 //                time[3] = year
-var existing_date = convert_existing_date()
-console.log(existing_date)
+var exist = new Date();
+var a = String(exist)
+var existing_date = convert_existing_date(a)
+
 
 return new Promise( function(resolve,reject){
 FoodModel.find({ },  function (err, docs) {
     //var i;
-    var Isexpired = 0;
+    console.log(convert_existing_date())
    for (i = 0 ;i<docs.length; i++ )
-   {
+   {    
+    var Isexpired = 0;
+        var alert = console.log(docs[i].alert);
+        
        var dataTime = String(docs[i].Expired_date)
        var data_date = convert_existing_date(dataTime)
        if (data_date[3] <= existing_date[3])
@@ -117,8 +123,8 @@ FoodModel.find({ },  function (err, docs) {
             if (data_date[2] <= existing_date[2])
        {
            Isexpired = String(docs[i]._id)
-           FoodModel.findOneAndUpdate({_id:Isexpired},{Isexpired1: true },{ returnOriginal: false }, function (err, expried_data) {
-                console.log("found one expried")
+           FoodModel.findOneAndUpdate({_id:Isexpired},{ Isexpired1: true },{ returnOriginal: false }, function (err, expried_data) {
+                
            })
        }
         }
@@ -137,7 +143,7 @@ FoodModel.find({ },  function (err, docs) {
        {
            Isexpired = String(docs[i]._id)
            FoodModel.findOneAndUpdate({_id:Isexpired},{ Isexpired1: true },{ returnOriginal: false }, function (err, expried_data) {
-                console.log("found one expried")
+            
            })
        }
         }
@@ -152,4 +158,5 @@ FoodModel.find({ },  function (err, docs) {
 
 );
 }
+check_expired()
 module.exports = check_expired;

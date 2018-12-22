@@ -22,11 +22,13 @@ let foodSchema = new Schema({
     Expired_date:Date,
     best_before_date: Date,
     Food_type : String,
-    Isexpired :{type: Boolean,
+    alert : String,
+    Isexpired1:  {type: Boolean,
       default: false},
+    Isexpire_soon :{type: String,
+      default: "false"},
   })
   
   
 let FoodModel = mongooes.model('data_set', foodSchema)
-
 module.exports = FoodModel;

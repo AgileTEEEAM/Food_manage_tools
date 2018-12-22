@@ -1,8 +1,26 @@
 var FoodModel = require('./test_DB.js');
 
 //create data in DB module
-var CreateDate =  function(alert = null,Food_Name=null, Buy_Date=null, Expired_date=null,best_before_date=null,Food_type=null ){
-  
+
+
+
+
+var CreateDate =  function(Food_Name=null, Buy_Date=null, Expired_date=null,best_before_date=null,Food_type=null,){
+    var Alert_day ;
+    if (Food_type == "Seafood" ||Food_type == "Meat")
+    {
+      console.log("11")
+        Alert_day = '3';
+    }else if(Food_type == "Dairy"||Food_type == "Vegetables" )
+    {
+      var Alert_day = '5';
+    }else if(Food_type == "Fruits" )
+    {
+      var Alert_day = '10';
+    }else if(Food_type == "Drinks" )
+    {
+      var Alert_day = '30';
+    }
     // formate the Date
     time1 = Buy_Date.replace(/-/g,':').replace(' ',':');
     time1 = time1.split(':');
@@ -24,6 +42,7 @@ var CreateDate =  function(alert = null,Food_Name=null, Buy_Date=null, Expired_d
       Buy_Date:Buy_Date_dateType,
       Expired_date:Expired_date_dateType,
       best_before_date:best_before_date_dateType,
+      alert : Alert_day,
       Food_type:Food_type,},
       (err) => {
         if (!err){

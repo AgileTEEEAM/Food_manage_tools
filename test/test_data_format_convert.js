@@ -1,7 +1,7 @@
-
+//testing of Time format conversion
 var expect = require('chai').expect;
 var convert_existing_date = require('../public/Convert_Date_format');
-describe('Save records to DB', function() {
+describe('testing of Time format conversion', function() {
     this.timeout(0);
     
     it('Testing the fomate Data programme',  function(){
@@ -23,7 +23,4 @@ describe('Save records to DB', function() {
         expect(ThirdCase[2]).to.equal('31');
         expect(ThirdCase[3]).to.equal('2018');
         expect(ThirdCase[0]).to.equal('Sunday');
-        setTimeout((function() {  
-            return process.kill(process.pid);
-        }), 5000);
 })});

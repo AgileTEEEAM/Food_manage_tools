@@ -17,33 +17,41 @@ head
       }
         
 body
-  form#signup(action="inputed", method="get")
+  form#signup(action="updated", method="get")
     fieldset
       legend='Food details'
       | 			
       | 			
       ol
+        li(selected='', disabled='', hidden='')
+          label(for="id") Food Name 
+          |  
+          | 					
+          input#empfirstName(type="text", name="id", ng-model="empfirstName", placeholder="id", required="", value = ""+id)
+        | 			
+        | 				
+
         li
           label(for="Food_Name") Food Name 
           |  
           | 					
-          input#empfirstName(type="text", name="Food_Name", ng-model="empfirstName", placeholder="Food_Name", required="")
+          input#empfirstName(type="text", name="Food_Name", ng-model="empfirstName", placeholder="Food_Name", required="", value = ""+food_name)
         | 			
         | 				
         li
           label(for="Buy_Date") Date of purchase 
           |             
-          input#dateofBirth(placeholder="mm/dd/yyyy", value="", type="date", name="Buy_Date", required="")
+          input#dateofBirth(placeholder="mm/dd/yyyy", value= ""+buyFoodDate_year+"-"+buyFoodDate_month+"-"+buyFoodDate_day, type="date", name="Buy_Date", required="")
         |               
         li
           label(for="Expired_date") Expired date  
           |                 
-          input#dateofBirth(placeholder="mm/dd/yyyy", value="", type="date", name="Expired_date", required="")
+          input#dateofBirth(placeholder="mm/dd/yyyy", value= ""+expiredDate_year+"-"+expiredDate_month+"-"+expiredDate_day , type="date", name="Expired_date", required="")
         |                   
         li
           label(for="best_before_date") best before date  
           |                     
-          input#dateofBirth(placeholder="mm/dd/yyyy", value="", type="date", name="best_before_date")
+          input#dateofBirth(placeholder="mm/dd/yyyy", value=""+bestBeforeDate_year+"-"+expiredDate_month+"-"+bestBeforeDate_day, type="date", name="best_before_date")
         | 			
         | 				
         | 				
@@ -51,6 +59,9 @@ body
           label(for="Food_type") Food type
           | 					
           select#state(name="Food_type")
+            
+            option=Food_type
+            |                       
             option='Meat'
             |                       
             option='Seafood'
