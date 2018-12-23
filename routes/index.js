@@ -58,5 +58,57 @@ router.get('/inputed', async function(req, res, next) {
   res.render('input_success');
 });
 
+/* GET delete page. */
+router.get('/delete', async function(req, res, next) {
+  let id = req.query.id
+  var iddel = await DeleteDate(id)
+  res.render('delete_success',);
+});
+
+
+
+/* GET update page. */
+router.get('/update', async function(req, res, next) {
+  
+  var Data = await findData(req.query.id)
+  console.log( Data[0][0][1])
+  
+  res.render('update', {
+    buyFoodDate_month : Data[0][0][1],
+    buyFoodDate_day : Data[0][0][2],
+    buyFoodDate_year: Data[0][0][3],
+    expiredDate_month : Data[1][0][1],
+    expiredDate_day : Data[1][0][2],
+    expiredDate_year : Data[1][0][3],
+    bestBeforeDate_month : Data[3][0][1],
+    bestBeforeDate_day : Data[3][0][2],
+    bestBeforeDate_year : Data[3][0][3],
+    buyFoodDate       :Data[0],
+    expiredDate       :Data[1],
+    Isexpired         :Data[2], 
+    bestBeforeDate    :Data[3], 
+    length            :Data[4],
+    food_name         :Data[5][0],
+    Food_type         :Data[6][0][0],
+    id                :Data[7][0],
+    Isexpire_soon     :Data[8],
+    Has_veriable      :Data[9],
+  });
+});
+
+/* GET updated page. */
+router.get('/updated', async function(req, res, next) {
+  console.log(req.query.id)
+  await DeleteDate(req.query.id)  
+  let Food_Name = req.query.Food_Name;
+  let Buy_Date = req.query.Buy_Date;
+  let Expired_date = req.query.Expired_date;
+  let best_before_date = req.query.best_before_date;
+  let Food_type = req.query.Food_type;
+  
+  await createDate(Food_Name,Buy_Date, Expired_date, best_before_date, Food_type );
+
+  res.render('updata_success', );
+});
 
 module.exports = router;
